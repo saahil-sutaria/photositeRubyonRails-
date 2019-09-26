@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+  hr {
+    border: none;
+    height: 5px;
+    color: #333;
+    background-color: #333;
+  }
+
+</style>
+<body>
+<h1 align="center" color="blue"><a href="/user/index"> Photos By <%=@users.first_name %> <%= @users.last_name%></a></h1>
+<% @photos.each do |photos| %>
+  <table width="50%" border="3" class="table table-dark">
+  <%= image_tag photos.file_name, :size=>"250x250" %>
+    <a style="font-family: times, serif; font-size:10pt; font-style:italic">photo posted on</a>
+  <%= photos.date_time%>
+  <% @comments = photos.comments%>
+  <h2><font size="4">Comments:</font></h2>
+  <% @comments.each do |comment| %>
+    <div>
+        <li>
+          <%= comment.comment_text %>
+          <br>
+          <%@user= User.find(comment.user_id) %>
+          <p style="font-family: times, serif; font-size:10pt; font-style:italic">--comment by: <%= link_to @user.first_name, {action: "index", :id=> @user.id} %> <%= @user.last_name %></p>
+
+
+        </li>
+    </div>
+    <br>
+   <% end %>
+    <hr size="3" width="75%">
+  </table>
+<%end%>
+
+
+
+</body>
+</html>
+
+

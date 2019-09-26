@@ -1,0 +1,35 @@
+class LoadData < ActiveRecord::Migration[6.0]
+  def up
+    # Create initial users.
+    down
+    jb = User.new(:first_name => "Justin", :last_name => "Bieber")
+    jb.save(:validate => false)
+    ph = User.new(:first_name => "Paris",  :last_name => "Hilton")
+    ph.save(:validate => false)
+    mc = User.new(:first_name => "Miley",  :last_name => "Cyrus")
+    mc.save(:validate => false)
+    bo = User.new(:first_name => "Barack", :last_name => "Obama")
+    bo.save(:validate => false)
+
+    p1= Photo.new(:date_time=> "10-10-2019 07:23:45", :file_name => "justin1.jpg" )
+    p1.user_id=jb.id
+    p1.save(:validate=>false)
+
+    p2= Photo.new(:date_time=> "10-10-2019 07:23:45", :file_name => "justin2.jpg" )
+    p2.user_id=jb.id
+    p2.save(:validate=>false)
+
+
+    c1 = Comment.new(:comment_text=>"This is a beautiful picture", :date_time => "11-10-2019 10:43:22")
+    c1.user_id = mc.id        #miley commented
+    c1.photo_id = jb.id       #commented on justin
+    c1.save(:validate=>false)
+
+  end
+
+  def down
+    User.delete_all
+    Photo.delete_all
+    Comment.delete_all
+  end
+end
