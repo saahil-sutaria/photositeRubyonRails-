@@ -1,24 +1,17 @@
-# README
+#Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project displays the basic implementation of MVC model. Users can post and comment on the images. The data is preloaded. 
 
-Things you may want to cover:
 
-* Ruby version
+A User - has_many: photos, comments 
+A Photo - has_many: comments, belongs_to: user
+A comment - belongs_to: user, photo.
 
-* System dependencies
+The route is based on User_id: example: user/3.
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+RubyGems Environment:
+  - RUBYGEMS VERSION: 3.0.6
+  - RUBY VERSION: 2.6.3 (2019-04-16 patchlevel 62) [x86_64-darwin18]
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
