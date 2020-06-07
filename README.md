@@ -4,8 +4,15 @@ This project displays the basic implementation of MVC model. Users can post and 
 
 
 A User - has_many: photos, comments 
+
+
+
 A Photo - has_many: comments, belongs_to: user
+
+
+
 A comment - belongs_to: user, photo.
+
 
 The route is based on User_id: example: user/3.
 
